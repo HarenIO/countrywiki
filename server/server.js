@@ -15,10 +15,19 @@ app.get('/getcountries', (req, res) => {
   res.json(db)
 })
 
-app.post('/countries', (req, res) => {
-  const foundCountry = countries.find((country) => country.country === req.body.country)
-/*   const data = JSON.stringify(foundCountry)
- */  res.json(foundCountry)
+app.get('/countries', (req, res) => {
+
+  const { country } = req.query
+
+  if (!country || typeof country !== 'string') {
+    return res.status(400).end('Invalid country')
+  }
+
+  const foundCountry = countries.find((c) => c.country === country)
+  if (!foundCountry) {
+    return res.status(404).end('Country not found')
+  }
+  res.json(foundCountry)
 })
 
 
