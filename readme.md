@@ -26,4 +26,6 @@
   ```
 
 * **Delete**: DELETE
-  *  `http://localhost:5050/admin/delete?key=secretkey&country=india`
+   ```
+   http://localhost:5050/admin/delete?key=secretkey&country=india
+   ```
